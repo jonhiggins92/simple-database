@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQLite Web App</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<h1>SQLite Records</h1>
+
+<form action="/add" method="POST">
+  <input type="text" name="name" placeholder="Name" required>
+  <input type="text" name="description" placeholder="Description">
+  <button type="submit">Add Record</button>
+</form>
+
+<h2>Existing Records</h2>
+<ul>
+  {% for record in records %}
+  <li>{{ record['name'] }}: {{ record['description'] }}</li>
+  {% endfor %}
+</ul>
+</body>
+</html>
